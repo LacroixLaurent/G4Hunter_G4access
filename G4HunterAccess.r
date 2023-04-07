@@ -11,12 +11,12 @@ genome <- BSgenome.Dmelanogaster.UCSC.dm6
 seqinf <- seqinfo(genome)
 seqlevels(seqinf) <- seqlevels(genome)[1:8]
 w=25
-timestamp()
+
 G4hk=mclapply((8:1),function(i) {x=mG4huntlistref(i,k=w,hl=c(1.2,1.5,2),gen=genome,with.seq=F);print(i);return(x)},mc.cores=8L)
 G4H_w25=unlist(do.call(c,G4hk))
 seqlevels(G4H_w25, pruning.mode="coarse") <- seqlevels(seqinf)
 seqinfo(G4H_w25) <- seqinf
-timestamp()
+
 save(G4H_w25,file="DM6_G4H_w25.RData")
 lapply(c(1.2,1.5,2), function(i) {
 	export(G4H_w25[G4H_w25$hl==i], con=paste0("DM6_G4H",i,".bed"))
@@ -28,12 +28,12 @@ genome <- BSgenome.Scerevisiae.UCSC.sacCer3
 seqinf <- seqinfo(genome)
 seqlevels(seqinf) <- seqlevels(genome)[1:17]
 w=25
-timestamp()
+
 G4hk=mclapply((1:17),function(i) {x=mG4huntlistref(i,k=w,hl=c(1.2,1.5,2),gen=genome,with.seq=F);print(i);return(x)},mc.cores=8L)
 G4H_w25=unlist(do.call(c,G4hk))
 seqlevels(G4H_w25, pruning.mode="coarse") <- seqlevels(seqinf)
 seqinfo(G4H_w25) <- seqinf
-timestamp()
+
 save(G4H_w25,file="SC3_G4H_w25.RData")
 lapply(c(1.2,1.5,2), function(i) {
 	export(G4H_w25[G4H_w25$hl==i], con=paste0("SC3_G4H",i,".bed"))
