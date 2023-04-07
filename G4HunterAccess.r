@@ -2,8 +2,8 @@
 #### For JC Andrau's lab
 
 #### map G4 with G4Hunter for SacCer3 and DM6
-source("G4HunterAccess_function.r")
 
+source("G4HunterAccess_function.r")
 
 ### DM6
 library("BSgenome.Dmelanogaster.UCSC.dm6")
@@ -22,7 +22,7 @@ lapply(c(1.2,1.5,2), function(i) {
 	export(G4H_w25[G4H_w25$hl==i], con=paste0("DM6_G4H",i,".bed"))
 })
 
-
+### Yeast data
 library("BSgenome.Scerevisiae.UCSC.sacCer3")
 genome <- BSgenome.Scerevisiae.UCSC.sacCer3
 seqinf <- seqinfo(genome)
